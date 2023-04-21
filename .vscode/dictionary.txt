@@ -39,8 +39,11 @@ getslice
 gmock
 gtest
 hdesc
+hdev
 hibyte
 hidapi
+hidinput
+hosiden
 hsplit
 htmlcov
 idesc
@@ -51,7 +54,11 @@ inlinevar
 isort
 itertools
 iwyu
+kdir
+kfree
 khtml
+kmalloc
+konami
 kwallet
 labelsize
 levelname
@@ -73,6 +80,7 @@ needmessage
 netrc
 nistp
 objectdb
+objs
 offtopic
 oneshot
 optparse

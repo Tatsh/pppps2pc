@@ -63,7 +63,14 @@
     ".directory",
     "build/**",
     "dist/**",
-    "htmlcov/**"
+    "htmlcov/**",
+    "kernel/*.mod*",
+    "kernel/*.order",
+    "*.ko",
+    "*.o",
+    "*.cmd",
+    ".gitignore",
+    ".clang-format"
   ],
   "language": "en-GB",
   "languageSettings": [
