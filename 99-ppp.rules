@@ -1,0 +1,1 @@
+ENV{DEVTYPE}=="usb_device", ACTION=="add", SUBSYSTEM=="usb", ATTR{idVendor}=="0507", ATTR{idProduct}=="0011", RUN+="/usr/bin/activate-ppp"

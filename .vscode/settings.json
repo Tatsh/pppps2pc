@@ -1,0 +1,51 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.tabSize": 4,
+  "files.associations": {
+    "usbd.h": "c",
+    "types.h": "c",
+    "sifrpc.h": "c",
+    "sifcmd.h": "c"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "cSpell.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.insertSpaces": true,
+  "editor.rulers": [101],
+  "editor.wordWrapColumn": 100,
+  "eslint.lintTask.enable": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.completeFunctionParens": true,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportUnknownArgumentType": "none",
+    "reportUnknownMemberType": "none",
+    "reportUnknownVariableType": "none"
+  },
+  "python.analysis.importFormat": "relative",
+  "python.analysis.indexing": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.pytestParameters": true,
+  "python.analysis.inlayHints.variableTypes": true,
+  "python.analysis.packageIndexDepths": [
+    {
+      "depth": 100,
+      "name": ""
+    }
+  ],
+  "python.analysis.stubPath": ".stubs",
+  "python.analysis.typeCheckingMode": "strict",
+  "python.defaultInterpreterPath": "~/.virtualenvs/instagram-archiver/bin/python",
+  "python.formatting.provider": "yapf",
+  "python.languageServer": "Pylance",
+  "python.linting.flake8Enabled": false,
+  "python.linting.pylintEnabled": true,
+  "yaml.format.printWidth": 100
+}
