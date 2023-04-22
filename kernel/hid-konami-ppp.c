@@ -12,9 +12,6 @@
 #include <linux/hid.h>
 #include <linux/module.h>
 
-#define VENDOR_HOSIDEN 0x0507
-#define DEV_KONAMI_PPP 0x0011
-
 static int ppp_send_output_report(struct hid_device *hdev)
 {
 	int ret = 0;
@@ -41,10 +38,9 @@ static int ppp_input_configured(struct hid_device *hdev,
 	return ppp_send_output_report(hdev);
 }
 
-static const struct hid_device_id ppp_devices[] = {
-	{ HID_USB_DEVICE(VENDOR_HOSIDEN, DEV_KONAMI_PPP) },
-	{}
-};
+static const struct hid_device_id ppp_devices[] = { { HID_USB_DEVICE(0x0507,
+								     0x0011) },
+						    {} };
 
 MODULE_DEVICE_TABLE(hid, ppp_devices);
 

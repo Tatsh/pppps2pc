@@ -16,7 +16,10 @@
     "sifrpc.h": "c",
     "sifcmd.h": "c",
     "hid.h": "c",
-    "module.h": "c"
+    "module.h": "c",
+    "slab.h": "c",
+    "bitops.h": "c",
+    "int-ll64.h": "c"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
