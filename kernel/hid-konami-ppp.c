@@ -16,13 +16,12 @@ static int ppp_send_output_report(struct hid_device *hdev)
 {
 	int ret = 0;
 	const int buf_size = 2;
-	u8 *buf = kmalloc(buf_size, GFP_KERNEL);
-	buf[0] = 0;
-	buf[1] = 3;
+	u8 buf[] = { 0, 3 };
 	ret = hid_hw_raw_request(hdev, 0, buf, buf_size, HID_OUTPUT_REPORT,
 				 HID_REQ_SET_REPORT);
-	kfree(buf);
-	return ret != buf_size ? 1 : 0;
+	if (ret != buf_size)
+		return 1;
+	return 0;
 }
 
 #ifdef CONFIG_PM
