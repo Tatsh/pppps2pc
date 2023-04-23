@@ -4,10 +4,22 @@
   "editor.formatOnType": true,
   "editor.tabSize": 4,
   "files.associations": {
+    "**/bash-completion/completions/*": "shellscript",
+    "*.json.dist": "json",
+    ".bash_functions": "shellscript",
+    ".macos": "shellscript",
+    ".psqlrc": "sql",
+    ".pythonrc": "python",
+    "Portfile": "tcl",
     "usbd.h": "c",
     "types.h": "c",
     "sifrpc.h": "c",
-    "sifcmd.h": "c"
+    "sifcmd.h": "c",
+    "hid.h": "c",
+    "module.h": "c",
+    "slab.h": "c",
+    "bitops.h": "c",
+    "int-ll64.h": "c"
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"

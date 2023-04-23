@@ -5,5 +5,11 @@
 /build/
 /dist/
 /htmlcov/
+/kernel/*.cmd
+/kernel/*.ko
+/kernel/*.mod*
+/kernel/*.o
+/kernel/Module.symvers
+/kernel/modules.order
 /node_modules/
 /yarn-error.log
