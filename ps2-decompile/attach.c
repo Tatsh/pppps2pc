@@ -87,7 +87,7 @@ int usbmouse_attach(int devId) {
         goto fail;
     }
 
-    if ((g->configEnpoint = sceUsbdOpenPipe(devId, 0)) < USB_RC_OK) {
+    if ((g->configEndpoint = sceUsbdOpenPipe(devId, 0)) < USB_RC_OK) {
 #ifdef DEBUG
         printf("sceUsbdOpenPipe failed(1)\n");
 #endif

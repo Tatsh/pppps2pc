@@ -51,6 +51,7 @@ idiv
 ignoreerrors
 infojson
 inlinevar
+isoc
 isort
 itertools
 iwyu
