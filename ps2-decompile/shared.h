@@ -2,13 +2,13 @@
 #define SHARED_H
 
 typedef struct t_shared {
-    const int devId;
+    int devId;
     int port1;
     int configEndpoint;
     int dataEndpoint;
-    const int maxPacketSize;
-    const int interfaceNumber;
-    const int alternateSetting;
+    int maxPacketSize;
+    int interfaceNumber;
+    int alternateSetting;
     int count;
     int port;
     int unk5;
