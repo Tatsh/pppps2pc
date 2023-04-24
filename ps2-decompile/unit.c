@@ -19,7 +19,6 @@ shared_t *unit_alloc(const int id, const int maxPacketSize, const u8 interfaceNu
     mem->interfaceNumber = interfaceNumber;
     mem->alternateSetting = alternateSetting;
     mem->unk5 = 1;
-    mem->descriptorChecksPassed = mem->count = mem->port = mem->unk7 = 0;
     return mem;
 }
 
