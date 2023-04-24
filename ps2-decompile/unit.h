@@ -4,7 +4,7 @@
 #include "shared.h"
 #include <types.h>
 
-shared_t *unit_alloc(int id, int maxPacketSize, u8 interfaceNumber, u8 alternateSetting);
+shared_t *unit_alloc(const int id, const int maxPacketSize, const u8 interfaceNumber, const u8 alternateSetting);
 void unit_free(shared_t *p);
 
 #endif // UNIT_H
