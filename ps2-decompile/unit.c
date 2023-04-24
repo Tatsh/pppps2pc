@@ -9,7 +9,7 @@ shared_t *unit_alloc(const int id, const int maxPacketSize, const u8 interfaceNu
     if ((mem = AllocSysMemory(0, maxPacketSize + 32820, 0)) == NULL)
         return NULL;
 
-    memset(mem, 0, sizeof(mem));
+    memset(mem, 0, sizeof(shared_t));
 
     mem->devId = id;
     //v5 = *(_DWORD *)(v4 + 0xFFFF8064); // 0x2D20 bss kb
