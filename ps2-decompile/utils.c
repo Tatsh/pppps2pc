@@ -1,37 +1,33 @@
-#include "callbacks.h"
-#include "shared.h"
-#include <stdio.h>
-#include <usbd.h>
+#include "utils.h"
 
 int data_transfer(shared_t *g) {
     int result; // $v0
+    // sceUsbdInterruptTransfer(g->c_pipe2, ?, g->maxPacketSize, data_transfer_done, g)
+    result = sceUsbdTransferPipe(g->dataEndpoint, &g->unk8[0x7804], g->maxPacketSize, 0,
+        data_transfer_done, g);
 
-    result = sceUsbdTransferPipe(
-        g->dataEndpoint,
-        &g->unk8[0x7804],
-        g->maxPacketSize,
-        0,
-        data_transfer_done,
-        g); // sceUsbdInterruptTransfer(g->c_pipe2, ?, g->maxPacketSize, data_transfer_done, g)
+#ifdef DEBUG
     if (result)
         result = printf("usbmouse%d: %s -> 0x%x\n", g->port1, "sceUsbdInterruptTransfer", result);
+#endif
+
     return result;
 }
 
+#ifdef DEBUG
 UsbDeviceDescriptor *dump_desc(int devId) {
     UsbDeviceDescriptor *result; // $v0
-    int v2;                      // $gp
     UsbConfigDescriptor *cdesc;  // [sp+18h] [+18h]
     UsbInterfaceDescriptor *idesc;
     UsbEndpointDescriptor *edesc;
     UsbStringDescriptor *sdesc;
-    int i; // [sp+20h] [+20h]
 
     printf("\n\nUSBKB : static Descriptor DUMP\n");
     while (1) {
-        result = sceUsbdScanStaticDescriptor(devId, cdesc, 0); // 0 means go through all descriptors
-        if (!result)
+        // 0 means go through all descriptors
+        if ((result = sceUsbdScanStaticDescriptor(devId, cdesc, 0)) == NULL)
             break;
+
         switch (result->bDescriptorType) {
         case USB_DT_DEVICE:
             printf("--Device--\n");
@@ -67,9 +63,7 @@ UsbDeviceDescriptor *dump_desc(int devId) {
             printf("---StringDesc---\n");
             printf("bDescriptorType 0x%02X\n", sdesc->bDescriptorType);
             printf("bString ");
-            for (i = 0; i < sdesc->bLength - 2; ++i)
-                printf((const char *)(v2 + 0xFFFF801C), sdesc->wData + i);
-            printf((const char *)(v2 + 0xFFFF8020));
+            printf("wData[0] = 0x%04x", sdesc->wData[0]);
             break;
         case USB_DT_INTERFACE:
             idesc = result;
@@ -114,3 +108,4 @@ UsbDeviceDescriptor *dump_desc(int devId) {
     }
     return result;
 }
+#endif
