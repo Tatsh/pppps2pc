@@ -2,9 +2,7 @@
 
 int data_transfer(shared_t *g) {
     int result; // $v0
-    // sceUsbdInterruptTransfer(g->c_pipe2, ?, g->maxPacketSize, data_transfer_done, g)
-    result = sceUsbdInterruptTransfer(g->dataEndpoint, &g->unk8[0x7804], g->maxPacketSize, data_transfer_done, g);
-        data_transfer_done, g);
+    result = sceUsbdInterruptTransfer(g->dataEndpoint, &g->unk8[0x7804], g->maxPacketSize, 0, data_transfer_done, g);
 
 #ifdef DEBUG
     if (result)
