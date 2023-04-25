@@ -2,6 +2,7 @@
 
 #include "callbacks.h"
 #include "shared.h"
+#include "utils.h"
 
 static const int USB_ID = 0x110;
 static const int USB_MAX_POWER = 0xC8;
@@ -91,7 +92,6 @@ int usbmouse_attach(int devId) {
 #ifdef DEBUG
         printf("sceUsbdOpenPipe failed(1)\n");
 #endif
-        unit_free(g);
         goto fail;
     }
 #ifdef DEBUG
@@ -102,7 +102,6 @@ int usbmouse_attach(int devId) {
 #ifdef DEBUG
         printf("sceUsbdOpenPipe failed(2)\n");
 #endif
-        unit_free(g);
         goto fail;
     }
 
@@ -149,7 +148,6 @@ int usbmouse_attach(int devId) {
         printf("usbmouse%d: sceUsbdGetDeviceLocation -> 0x%x\n", g->port1,
                getDeviceLocationRet);
 #endif
-        unit_free(g);
         goto fail;
     }
 
@@ -183,7 +181,9 @@ int usbmouse_attach(int devId) {
         goto fail;
     }
 
+#ifdef DEBUG
     dump_desc(devId);
+#endif
     return 0;
 
 fail:
