@@ -4,7 +4,12 @@
 #include "callbacks.h"
 #include "shared.h"
 #include <stdio.h>
+#include <stdio.h>
+
 #include <usbd.h>
+
+#include "callbacks.h"
+#include "shared.h"
 
 int data_transfer(shared_t *g);
 
