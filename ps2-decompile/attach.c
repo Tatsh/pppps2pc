@@ -1,8 +1,27 @@
-#include "driver.h"
+#include <usbd.h>
 
-static char dword_2D18[2048];
+#include "callbacks.h"
+#include "shared.h"
+#include "utils.h"
+
+static const int USB_ID = 0x110;
+static const int USB_MAX_POWER = 0xC8;
+static const int USB_DESCRIPTOR_TYPE = 0x21;
+static const int USB_DEVICE_CLASS = 0x0;
+static const int USB_DEVICE_PROTOCOL = 0x22;
+static const int USB_DEVICE_PROTOCOL_LENGTH = 0x09;
+static const int USB_DEVICE_PROTOCOL_MAX_SIZE = 0x52;
+static const int USB_PROTOCOL_TOTAL_LENGTH = 0x2200;
+static const int USB_DEVICE_VENDOR = 0x5051;
+static const int USB_DEVICE_ENDPOINT_ADDRESS = 0x81;
+static const unsigned int USB_PORT_A = 0x02u;
+static const unsigned int USB_PORT_B = 0x01u;
+static const int USB_MAX_PACKET_LO_BYTE = 0x08;
+static const int USB_MAX_PACKET_HI_BYTE = 0x01;
 
 int usbmouse_attach(int devId) {
+    int i;
+    int gp0, gp1, gp2, v5;           // $gp, $v0
     int maxPacketSize, getDeviceLocationRet, transferPipeRet;
     UsbConfigDescriptor *cdesc;     // [sp+18h] [+18h]
     UsbInterfaceDescriptor *idesc;  // [sp+1Ch] [+1Ch]
@@ -11,8 +30,6 @@ int usbmouse_attach(int devId) {
     shared_t *g;                    // [sp+28h] [+28h]
     char deviceLocationPath[8];     // [sp+38h] [+38h] BYREF
     UsbDeviceRequest deviceRequest; // [sp+40h] [+40h] BYREF
-
-    memset(deviceLocationPath, 0, sizeof(deviceLocationPath));
 
     if ((cdesc = sceUsbdScanStaticDescriptor(devId, 0, USB_DT_CONFIG)) == NULL) {
 #ifdef DEBUG
@@ -134,6 +151,7 @@ int usbmouse_attach(int devId) {
         goto fail;
     }
 
+
     switch (deviceLocationPath[0]) {
     case 1:
         g->port |= USB_PORT_A;
@@ -172,76 +190,4 @@ fail:
     if (g)
         unit_free(g);
     return -1;
-}
-
-int usbmouse_detach(int devId) {
-    shared_t *p; // [sp+10h] [+10h]
-
-    if ((p = sceUsbdGetPrivateData(devId)) == NULL)
-        return -1;
-
-    if (p->port > 0)
-        memset(&dword_2D18[2 * p->port], 0, 8u);
-
-    unit_free(p);
-
-#ifdef DEBUG
-    printf("usbmouse%d: detached : port %d\n", p->port1, p->port);
-#endif
-
-    return 0;
-}
-
-int usbmouse_probe(int devId) {
-    UsbDeviceDescriptor *hdesc;    // [sp+10h] [+10h]
-    UsbInterfaceDescriptor *idesc; // [sp+14h] [+14h]
-
-#ifdef DEBUG
-    printf("-------- dev_id = %d\n", devId);
-#endif
-
-    if ((hdesc = sceUsbdScanStaticDescriptor(devId, 0, 1)) == NULL) {
-#ifdef DEBUG
-        printf("#### USB : ScanStaticDescriptor Failed(0)\n");
-#endif
-        goto fail;
-    }
-
-    if ((idesc = sceUsbdScanStaticDescriptor(devId, hdesc, 4)) == NULL) {
-#ifdef DEBUG
-        printf("#### USB : ScanStaticDescriptor Failed(1)\n");
-#endif
-        goto fail;
-    }
-
-    if ((hdesc->bLength != 18 || hdesc->bDescriptorType != 1 || hdesc->bcdUSB != 272 ||
-        hdesc->bDeviceClass != 0 || hdesc->bDeviceSubClass >= 1 || hdesc->bDeviceProtocol != 0 ||
-        hdesc->bMaxPacketSize0 != 8 || hdesc->idVendor != 1287 || hdesc->idProduct != 17 ||
-        hdesc->iManufacturer != 1 || hdesc->iProduct != 2 || hdesc->iSerialNumber >= 1 ||
-        hdesc->bNumConfigurations != 1)) {
-#ifdef DEBUG
-        printf("Wrong Device Desc.\n");
-#endif
-        goto fail;
-    }
-
-    if (idesc->bLength != 9 || idesc->bDescriptorType != 4 ||
-        idesc->bInterfaceNumber != 0 || idesc->bAlternateSetting != 0 ||
-        idesc->bNumEndpoints != 1 || idesc->bInterfaceClass != 3 ||
-        idesc->bInterfaceSubClass != 0 || idesc->bInterfaceProtocol != 0 ||
-        idesc->iInterface != 2) {
-#ifdef DEBUG
-        printf("Wrong Interface Desc.\n");
-#endif
-        goto fail;
-    }
-
-#ifdef DEBUG
-    printf("USB_PROBE END\n");
-#endif
-
-    return 1;
-
-fail:
-    return 0;
 }
