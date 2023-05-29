@@ -13,7 +13,7 @@ version = "0.0.1"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-hidapi = "^0.13.1"
+hidapi = ">=0.13.1,<0.15.0"
 
 [tool.poetry.group.dev]
 optional = true
