@@ -1,24 +1,27 @@
-#include <stdio.h>
 #include <usbd.h>
+
+#ifdef DEBUG
+#include <stdio.h>
+#endif
 
 int usbmouse_probe(int devId) {
     UsbDeviceDescriptor *hdesc;    // [sp+10h] [+10h]
     UsbInterfaceDescriptor *idesc; // [sp+14h] [+14h]
 
 #ifdef DEBUG
-    printf("-------- dev_id = %d\n", devId);
+    (void) printf("-------- dev_id = %d\n", devId);
 #endif
 
     if ((hdesc = sceUsbdScanStaticDescriptor(devId, 0, 1)) == NULL) {
 #ifdef DEBUG
-        printf("#### USB : ScanStaticDescriptor Failed(0)\n");
+        (void) printf("#### USB : ScanStaticDescriptor Failed(0)\n");
 #endif
         goto fail;
     }
 
     if ((idesc = sceUsbdScanStaticDescriptor(devId, hdesc, 4)) == NULL) {
 #ifdef DEBUG
-        printf("#### USB : ScanStaticDescriptor Failed(1)\n");
+        (void) printf("#### USB : ScanStaticDescriptor Failed(1)\n");
 #endif
         goto fail;
     }
@@ -29,7 +32,7 @@ int usbmouse_probe(int devId) {
         hdesc->iManufacturer != 1 || hdesc->iProduct != 2 || hdesc->iSerialNumber >= 1 ||
         hdesc->bNumConfigurations != 1)) {
 #ifdef DEBUG
-        printf("Wrong Device Desc.\n");
+        (void) printf("Wrong Device Desc.\n");
 #endif
         goto fail;
     }
@@ -40,13 +43,13 @@ int usbmouse_probe(int devId) {
         idesc->bInterfaceSubClass != 0 || idesc->bInterfaceProtocol != 0 ||
         idesc->iInterface != 2) {
 #ifdef DEBUG
-        printf("Wrong Interface Desc.\n");
+        (void) printf("Wrong Interface Desc.\n");
 #endif
         goto fail;
     }
 
 #ifdef DEBUG
-    printf("USB_PROBE END\n");
+    (void) printf("USB_PROBE END\n");
 #endif
 
     return 1;

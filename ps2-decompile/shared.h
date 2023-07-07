@@ -15,7 +15,7 @@ typedef struct t_shared {
     int descriptorChecksPassed;
     int unk7;
     char buf[2048];
-    char unk8[30732];
+    char data[30732];
 } shared_t;
 
 #endif // SHARED_H
