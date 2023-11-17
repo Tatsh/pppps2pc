@@ -22,6 +22,6 @@ int usbmouse_detach(int devId) {
 #endif
     
     unit_free(p);
-
+    p = NULL;
     return 0;
 }
