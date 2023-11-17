@@ -17,11 +17,11 @@ int usbmouse_detach(int devId) {
     if (p->port > 0)
         memset(&dword_2D18[2 * p->port], 0, 8u);
 
-    unit_free(p);
-
 #ifdef DEBUG
     (void) printf("usbmouse%d: detached : port %d\n", p->port1, p->port);
 #endif
+    
+    unit_free(p);
 
     return 0;
 }
