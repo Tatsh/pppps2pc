@@ -171,8 +171,10 @@ int usbmouse_attach(int devId) {
     return 0;
 
 fail:
-    if (g)
+    if (g) {
         unit_free(g);
+        g = NULL;
+    }
 
     return -1;
 }
