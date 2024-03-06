@@ -25,5 +25,7 @@ shared_t *unit_alloc(const int id, const int maxPacketSize, const u8 interfaceNu
 void unit_free(shared_t *p) {
     //int v1;                     // $gp
     //--*(_DWORD *)(v1 - 0x7F9C); // 0x2D20 bs kb
+    if (p == NULL)
+        return;
     FreeSysMemory(p);
 }
