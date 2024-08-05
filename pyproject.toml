@@ -27,7 +27,7 @@ toml = "^0.10.2"
 yapf = ">=0.32,<0.41"
 
 [tool.poetry.group.packaging.dependencies]
-wheel = ">=0.40,<0.44"
+wheel = ">=0.40,<0.45"
 twine = ">=4.0.2,<6.0.0"
 
 [build-system]
