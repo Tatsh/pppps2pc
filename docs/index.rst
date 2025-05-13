@@ -1,5 +1,7 @@
 pppps2pc
-=============================
+========
+
+Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.
 
 Commands
 --------
@@ -19,7 +21,7 @@ Commands
    .. automodule:: pppps2pc.utils
       :members:
 
-  Indices and tables
-  ==================
-  * :ref:`genindex`
-  * :ref:`modindex`
+   Indices and tables
+   ==================
+   * :ref:`genindex`
+   * :ref:`modindex`
