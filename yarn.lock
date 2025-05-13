@@ -1146,7 +1146,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cspell@npm:^9.0.0":
+"cspell@npm:^9.0.1":
   version: 9.0.1
   resolution: "cspell@npm:9.0.1"
   dependencies:
@@ -2397,12 +2397,12 @@ __metadata:
   resolution: "pppps2pc@workspace:."
   dependencies:
     "@prettier/plugin-xml": "npm:^3.4.1"
-    cspell: "npm:^9.0.0"
+    cspell: "npm:^9.0.1"
     markdownlint-cli2: "npm:^0.18.0"
     prettier: "npm:^3.5.3"
     prettier-plugin-ini: "npm:^1.3.0"
     prettier-plugin-sort-json: "npm:^4.1.1"
-    prettier-plugin-toml: "npm:^2.0.4"
+    prettier-plugin-toml: "npm:^2.0.5"
     pyright: "npm:^1.1.400"
     yarn-audit-fix: "npm:^10.1.1"
   languageName: unknown
@@ -2426,7 +2426,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier-plugin-toml@npm:^2.0.4":
+"prettier-plugin-toml@npm:^2.0.5":
   version: 2.0.5
   resolution: "prettier-plugin-toml@npm:2.0.5"
   dependencies:

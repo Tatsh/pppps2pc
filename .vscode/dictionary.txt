@@ -5,6 +5,7 @@ autodoc
 automodule
 auxs
 bitrange
+bsky
 bvec
 cand
 cdev
