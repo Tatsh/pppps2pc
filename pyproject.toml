@@ -45,6 +45,7 @@ version_files = [
   "README.md",
   "package.json",
   "docs/index.rst",
+  "man/pppps2pc.1",
   "pppps2pc/__init__.py",
 ]
 version_provider = "pep621"

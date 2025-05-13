@@ -9,6 +9,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.1]
+
+Very minor changes.
+
 ## [0.1.0]
 
 ### Added
@@ -23,4 +27,4 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 First version.
 
-[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.1.1...HEAD
