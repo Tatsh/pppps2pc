@@ -9,3 +9,7 @@ all:
 
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
+
+install:
+	mkdir -p /lib/modules/$(shell uname -r)/extra
+	cp konami_ppp.ko /lib/modules/$(shell uname -r)/extra

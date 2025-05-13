@@ -22,6 +22,9 @@
 
 Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.
 
+Check out the [Linux kernel module](https://github.com/Tatsh/pppps2pc/tree/master/kernel) and the
+[PS2 driver (IRX) decompile](https://github.com/Tatsh/pppps2pc/tree/master/ps2-decompile).
+
 ## Installation
 
 ### Poetry
