@@ -20,7 +20,7 @@ keywords = ["controller", "para para paradise", "peripherals", "ps2", "udev", "u
 license = "MIT"
 name = "pppps2pc"
 readme = "README.md"
-version = "0.1.0"
+version = "0.1.1"
 
 [[project.authors]]
 email = "audvare@gmail.com"

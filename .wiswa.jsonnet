@@ -3,7 +3,7 @@
   description: 'Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.',
   keywords: ['controller', 'para para paradise', 'peripherals', 'ps2', 'udev', 'usb', 'utilities'],
   project_name: 'pppps2pc',
-  version: '0.1.0',
+  version: '0.1.1',
   want_main: true,
   citation+: {
     'date-released': '2025-05-13',
