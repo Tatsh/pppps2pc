@@ -35,22 +35,18 @@ documentation = "https://pppps2pc.readthedocs.org"
 homepage = "https://tatsh.github.io/pppps2pc/"
 repository = "https://github.com/Tatsh/pppps2pc"
 
-[tool]
-
 [tool.commitizen]
 tag_format = "v$version"
 version_files = [
   ".wiswa.jsonnet",
   "CITATION.cff",
   "README.md",
-  "package.json",
   "docs/index.rst",
   "man/pppps2pc.1",
+  "package.json",
   "pppps2pc/__init__.py",
 ]
 version_provider = "pep621"
-
-[tool.coverage]
 
 [tool.coverage.report]
 exclude_also = ["if TYPE_CHECKING:"]
@@ -91,8 +87,6 @@ colorlog = "^6.9.0"
 hidapi = "^0.14.0"
 python = ">=3.10,<3.14"
 typing-extensions = "^4.13.1"
-
-[tool.poetry.group]
 
 [tool.poetry.group.dev]
 optional = true
@@ -159,8 +153,6 @@ reportShadowedImports = "error"
 reportUnnecessaryTypeIgnoreComment = "none"
 typeCheckingMode = "off"
 useLibraryCodeForTypes = false
-
-[tool.pytest]
 
 [tool.pytest.ini_options]
 mock_use_standalone_module = true
