@@ -9,8 +9,18 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.0.1] - 2025-00-00
+## [0.1.0]
+
+### Added
+
+- Command to install udev rules.
+
+### Changed
+
+- Changed interface to be a root command with subcommands.
+
+## [0.0.1] - 2023-04-21
 
 First version.
 
-[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.0.1...HEAD
+[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.1.0...HEAD
