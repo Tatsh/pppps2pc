@@ -1,22 +1,113 @@
 {
-  "author": "Andrew Udvare <audvare@gmail.com>",
+  "contributors": ["Andrew Udvare <audvare@gmail.com>"],
+  "cspell": {
+    "cache": {
+      "useCache": true
+    },
+    "dictionaryDefinitions": [
+      {
+        "name": "main",
+        "path": ".vscode/dictionary.txt"
+      }
+    ],
+    "enableFileTypes": {
+      "*": true
+    },
+    "enableGlobDot": true,
+    "files": ["*"],
+    "ignorePaths": [
+      "*.1",
+      "*.har",
+      "*.lock",
+      ".git/**",
+      ".yarn/**/*.cjs",
+      ".vscode/extensions.json",
+      "man/**"
+    ],
+    "language": "en-GB",
+    "languageSettings": [
+      {
+        "dictionaries": ["main"],
+        "languageId": "*"
+      }
+    ],
+    "useGitignore": true
+  },
   "devDependencies": {
-    "cspell": "^6.31.1",
-    "prettier": "^2.8.7",
-    "prettier-plugin-ini": "^1.1.0",
-    "prettier-plugin-toml": "^0.3.1"
+    "@prettier/plugin-xml": "^3.4.1",
+    "cspell": "^9.0.0",
+    "markdownlint-cli2": "^0.17.2",
+    "prettier": "^3.5.3",
+    "prettier-plugin-ini": "^1.3.0",
+    "prettier-plugin-sort-json": "^4.1.1",
+    "prettier-plugin-toml": "^2.0.4",
+    "pyright": "^1.1.400",
+    "yarn-audit-fix": "^10.1.1"
   },
+  "homepage": "https://tatsh.github.io/pppps2pc/",
+  "keywords": [
+    "controller",
+    "para para paradise",
+    "peripherals",
+    "ps2",
+    "udev",
+    "usb",
+    "utilities"
+  ],
   "license": "MIT",
-  "name": "instagram-archiver",
-  "repository": "git@github.com:Tatsh/pppps2pc.git",
-  "scripts": {
-    "check-formatting": "yarn prettier -c './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && isort . --check && yapf -rd pppps2pc.py .stubs test",
-    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
-    "format": "yarn prettier -w './**/*.cfg' './**/*.ini' './**/*.md' './**/*.toml' './**/*.yml' ./.prettierrc ./.style.yapf && isort . && yapf -ri pppps2pc.py test",
-    "install-python-deps": "python -m pip install --upgrade pip && pip install poetry && poetry install && pip install -e . && pip install mypy pylint pylint-quotes pytest pytest-cov coveralls pytest-mock types-requests toml yapf",
-    "mypy": "mypy .",
-    "pylint": "pylint pppps2pc.py",
-    "qa": "yarn mypy && yarn pylint && yarn check-spelling && yarn check-formatting"
+  "markdownlint-cli2": {
+    "config": {
+      "MD033": {
+        "allowed_elements": ["kbd"]
+      },
+      "default": true,
+      "line-length": {
+        "code_blocks": false,
+        "line_length": 100
+      }
+    }
   },
-  "version": "0.2.0"
+  "name": "pppps2pc",
+  "packageManager": "yarn@4.9.1",
+  "prettier": {
+    "endOfLine": "lf",
+    "iniSpaceAroundEquals": true,
+    "jsonRecursiveSort": true,
+    "overrides": [
+      {
+        "files": ["package.json"],
+        "options": {
+          "parser": "json"
+        }
+      }
+    ],
+    "plugins": [
+      "@prettier/plugin-xml",
+      "prettier-plugin-ini",
+      "prettier-plugin-sort-json",
+      "prettier-plugin-toml"
+    ],
+    "printWidth": 100,
+    "reorderKeys": true,
+    "singleQuote": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Tatsh/pppps2pc.git"
+  },
+  "scripts": {
+    "check-formatting": "yarn prettier -c . && poetry run yapf -prd . && yarn markdownlint-cli2 '**/*.md' '#node_modules'",
+    "check-spelling": "yarn cspell --no-progress './**/*'  './**/.*'",
+    "format": "prettier -w . && poetry run yapf -ri . && yarn markdownlint-cli2 --fix '**/*.md' '#node_modules'",
+    "gen-docs": "poetry run sphinx-build -T -E -b html -d docs/_build/doctrees -D language=en docs docs/_build/html",
+    "gen-manpage": "poetry run sphinx-build -T -E -b man -d docs/_build/doctrees -D language=en docs man",
+    "mypy": "poetry run mypy",
+    "qa": "yarn mypy . && yarn ruff . && yarn check-spelling && yarn check-formatting",
+    "regen": "poetry run wiswa",
+    "ruff": "poetry run ruff check",
+    "ruff:fix": "poetry run ruff check --fix",
+    "test": "poetry run pytest",
+    "test:cov": "yarn test --cov . --cov-report html --cov-report term-missing:skip-covered"
+  },
+  "version": "0.0.1"
 }

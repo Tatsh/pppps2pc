@@ -1,44 +1,40 @@
 {
-    "configurations": [
-        {
-            "includePath": [
-                "${workspaceFolder}/**",
-                "/home/tatsh/dev/ps2sdk/common/include/",
-                "/home/tatsh/dev/ps2sdk/iop/kernel/include",
-                "/home/tatsh/dev/ps2sdk/iop/usb/usbd/include"
-            ],
-            "name": "ps2sdk"
-        },
-        {
-            "cStandard": "c11",
-            "compilerArgs": [
-                "-nostdinc",
-                "-include",
-                "/usr/src/linux/include/linux/kconfig.h",
-                "-include",
-                "/usr/src/linux/include/linux/compiler_types.h"
-            ],
-            "compilerPath": "/usr/bin/gcc",
-            "cppStandard": "gnu++17",
-            "defines": [
-                "__KERNEL__",
-                "MODULE",
-                "KBUILD_MODNAME=\"dummy\""
-            ],
-            "dotConfig": "/usr/src/linux/.config",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/src/linux/include/uapi/linux",
-                "/usr/lib/gcc/x86_64-pc-linux-gnu/12/include",
-                "/usr/src/linux/arch/x86/include",
-                "/usr/src/linux/arch/x86/include/generated",
-                "/usr/src/linux/arch/x86/include/generated/uapi",
-                "/usr/src/linux/arch/x86/include/uapi",
-                "/usr/src/linux/include",
-                "/usr/src/linux/include/uapi"
-            ],
-            "name": "kernel-driver"
-        }
-    ],
-    "version": 4
+  "configurations": [
+    {
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/home/tatsh/dev/ps2sdk/common/include/",
+        "/home/tatsh/dev/ps2sdk/iop/kernel/include",
+        "/home/tatsh/dev/ps2sdk/iop/usb/usbd/include"
+      ],
+      "name": "ps2sdk"
+    },
+    {
+      "cStandard": "c11",
+      "compilerArgs": [
+        "-nostdinc",
+        "-include",
+        "/usr/src/linux/include/linux/kconfig.h",
+        "-include",
+        "/usr/src/linux/include/linux/compiler_types.h"
+      ],
+      "compilerPath": "/usr/bin/gcc",
+      "cppStandard": "gnu++17",
+      "defines": ["__KERNEL__", "MODULE", "KBUILD_MODNAME=\"dummy\""],
+      "dotConfig": "/usr/src/linux/.config",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/src/linux/include/uapi/linux",
+        "/usr/lib/gcc/x86_64-pc-linux-gnu/12/include",
+        "/usr/src/linux/arch/x86/include",
+        "/usr/src/linux/arch/x86/include/generated",
+        "/usr/src/linux/arch/x86/include/generated/uapi",
+        "/usr/src/linux/arch/x86/include/uapi",
+        "/usr/src/linux/include",
+        "/usr/src/linux/include/uapi"
+      ],
+      "name": "kernel-driver"
+    }
+  ],
+  "version": 4
 }
