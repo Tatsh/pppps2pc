@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pppps2pc.utils import install_udev_rules
+from pppps2pc.constants import ENABLE_MAGIC_BYTES
+from pppps2pc.utils import enable_ppp_controller, install_udev_rules
 
 if TYPE_CHECKING:
     from pathlib import Path
 
     from pytest_mock import MockerFixture
-from pppps2pc.utils import ENABLE_MAGIC_BYTES, enable_ppp_controller
 
 
 def test_install_udev_rules_creates_file_with_correct_content(mocker: MockerFixture,
@@ -36,8 +36,6 @@ def test_install_udev_rules_uses_default_directory(mocker: MockerFixture) -> Non
 def test_enable_ppp_controller_writes_enable_magic_bytes(mocker: MockerFixture) -> None:
     mock_hid_device = mocker.patch('pppps2pc.utils.hid.device')
     mock_write = mock_hid_device.return_value.write
-
     enable_ppp_controller()
-
     mock_hid_device.assert_called_once()
     mock_write.assert_called_once_with(ENABLE_MAGIC_BYTES)

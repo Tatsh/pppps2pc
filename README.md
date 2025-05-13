@@ -4,7 +4,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/pppps2pc)](https://pypi.org/project/pppps2pc/)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/Tatsh/pppps2pc)](https://github.com/Tatsh/pppps2pc/tags)
 [![License](https://img.shields.io/github/license/Tatsh/pppps2pc)](https://github.com/Tatsh/pppps2pc/blob/master/LICENSE.txt)
-[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.0.1/master)](https://github.com/Tatsh/pppps2pc/compare/v0.0.1...master)
+[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.1.0/master)](https://github.com/Tatsh/pppps2pc/compare/v0.1.0...master)
 [![QA](https://github.com/Tatsh/pppps2pc/actions/workflows/qa.yml/badge.svg)](https://github.com/Tatsh/pppps2pc/actions/workflows/qa.yml)
 [![Tests](https://github.com/Tatsh/pppps2pc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/pppps2pc/actions/workflows/tests.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Tatsh/pppps2pc/badge.svg?branch=master)](https://coveralls.io/github/Tatsh/pppps2pc?branch=master)
@@ -21,6 +21,9 @@
 [![Mastodon Follow](https://img.shields.io/mastodon/follow/109370961877277568?domain=hostux.social&style=social)](https://hostux.social/@Tatsh)
 
 Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.
+
+Check out the [Linux kernel module](https://github.com/Tatsh/pppps2pc/tree/master/kernel) and the
+[PS2 driver (IRX) decompile](https://github.com/Tatsh/pppps2pc/tree/master/ps2-decompile).
 
 ## Installation
 
