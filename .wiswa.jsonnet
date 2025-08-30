@@ -8,6 +8,9 @@
   citation+: {
     'date-released': '2025-05-13',
   },
+  copilot: {
+    intro: 'pppps2pc is a simple tool to enable the ParaParaParadise PS2 controller on a PC.',
+  },
   pyproject+: {
     project+: {
       scripts: {

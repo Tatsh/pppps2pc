@@ -12,50 +12,6 @@ from .constants import ENABLE_MAGIC_BYTES, UDEV_RULES_FILENAME, UDEV_RULE_LINE
 log = logging.getLogger(__name__)
 
 
-def setup_logging(*,
-                  debug: bool = False,
-                  force_color: bool = False,
-                  no_color: bool = False) -> None:  # pragma: no cover
-    """Set up logging configuration."""
-    logging.config.dictConfig({
-        'disable_existing_loggers': True,
-        'root': {
-            'level': 'DEBUG' if debug else 'INFO',
-            'handlers': ['console'],
-        },
-        'formatters': {
-            'default': {
-                '()': 'colorlog.ColoredFormatter',
-                'force_color': force_color,
-                'format': (
-                    '%(light_cyan)s%(asctime)s%(reset)s | %(log_color)s%(levelname)-8s%(reset)s | '
-                    '%(light_green)s%(name)s%(reset)s:%(light_red)s%(funcName)s%(reset)s:'
-                    '%(blue)s%(lineno)d%(reset)s - %(message)s'),
-                'no_color': no_color,
-            }
-        },
-        'handlers': {
-            'console': {
-                'class': 'colorlog.StreamHandler',
-                'formatter': 'default',
-            }
-        },
-        'loggers': {
-            'hidapi': {
-                'level': 'DEBUG' if debug else 'ERROR',
-                'handlers': ('console',),
-                'propagate': False,
-            },
-            'pppps2pc': {
-                'level': 'DEBUG' if debug else 'INFO',
-                'handlers': ('console',),
-                'propagate': False,
-            },
-        },
-        'version': 1
-    })
-
-
 def enable_ppp_controller() -> None:
     """Enable a PS2 ParaParaParadise controller."""
     log.debug('Enabling device.')

@@ -1,9 +1,11 @@
 aggr
 allnodes
 apei
+asyncio
 autodoc
 automodule
 auxs
+bascom
 bitrange
 bsky
 bvec
@@ -11,8 +13,6 @@ cand
 cdev
 cmsghdr
 codeowners
-colored
-colorlog
 commitizen
 conftest
 contig
@@ -21,6 +21,7 @@ cpufreq
 crtc
 dapm
 dapms
+dataclasses
 datatable
 datatables
 debugpy
@@ -29,12 +30,12 @@ devtype
 dimm
 displayid
 djlint
+docstrings
 doctrees
 dpcm
 drhd
 dsos
 eeyore
-erdantic
 esbenp
 esbonio
 estatus
@@ -74,6 +75,7 @@ iommu
 iopt
 isoc
 isort
+itertools
 iwyu
 jinja
 jsonnet
@@ -83,7 +85,6 @@ kconfig
 kcore
 kdir
 kunit
-levelname
 lextudio
 lhash
 libbpf
@@ -100,6 +101,7 @@ modeset
 modindex
 modname
 mypy
+namedtuples
 nanddev
 netdev
 nlmsg
@@ -127,6 +129,7 @@ pycache
 pydantic
 pydocstyle
 pylance
+pylint
 pyproject
 pyright
 pytest

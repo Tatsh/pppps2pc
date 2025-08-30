@@ -5,9 +5,10 @@ from pathlib import Path
 import logging
 import sys
 
+from bascom import setup_logging
 import click
 
-from .utils import enable_ppp_controller, install_udev_rules, setup_logging
+from .utils import enable_ppp_controller, install_udev_rules
 
 __all__ = ('main',)
 
@@ -23,7 +24,17 @@ def main() -> None:
 @click.option('-d', '--debug', help='Enable debug level logging.', is_flag=True)
 def enable(*, debug: bool = False) -> None:
     """Enable a PS2 ParaParaParadise controller."""  # noqa: DOC501
-    setup_logging(debug=debug)
+    setup_logging(debug=debug,
+                  loggers={
+                      'hidapi': {
+                          'handlers': ('console',),
+                          'propagate': False,
+                      },
+                      'pppps2pc': {
+                          'handlers': ('console',),
+                          'propagate': False,
+                      },
+                  })
     try:
         enable_ppp_controller()
     except OSError as e:
@@ -44,7 +55,13 @@ def install_udev_rules_main(rules_dir: Path,
                             *,
                             debug: bool = False) -> None:
     """Install udev rules for the device."""  # noqa: DOC501
-    setup_logging(debug=debug)
+    setup_logging(debug=debug,
+                  loggers={
+                      'pppps2pc': {
+                          'handlers': ('console',),
+                          'propagate': False,
+                      },
+                  })
     try:
         install_udev_rules(path or sys.argv[0], rules_dir)
     except PermissionError as e:

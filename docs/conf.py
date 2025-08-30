@@ -43,7 +43,7 @@ html_theme_options = {
     'globaltoc_collapse': True,
     'icon': {
         'edit': 'material/file-edit-outline',
-        'repo': 'fontawesome/brands/gitlab'
+        'repo': 'fontawesome/brands/github'
     },
     'palette': [{
         'media': '(prefers-color-scheme)',
