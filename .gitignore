@@ -3,16 +3,20 @@
 *~
 .*.swp
 .*_cache/
+.DS_Store*
 .coverage
 .cspellcache
 .directory
 .pnp.*
+.venv/
 /.yarn/install-state.gz
 /build/
 /dist/
 /docs/_build/
 /man/_static/
+/mypy-report*/
 __pycache__/
+cobertura.xml
 htmlcov/
 kernel/*.cmd
 kernel/*.ko
@@ -20,4 +24,5 @@ kernel/*.mod*
 kernel/*.o
 kernel/Module.symvers
 kernel/modules.order
+mypy-report.xml
 node_modules/

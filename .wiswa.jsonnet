@@ -30,6 +30,17 @@ local utils = import 'utils.libjsonnet';
       },
     },
   },
+  local common_apt_packages = ['libudev-dev', 'libusb-1.0-0-dev'],
+  github+: {
+    workflows+: {
+      qa+: {
+        apt_packages: common_apt_packages,
+      },
+      tests+: {
+        apt_packages: common_apt_packages,
+      },
+    },
+  },
   gitignore+: [
     'kernel/*.cmd',
     'kernel/*.ko',

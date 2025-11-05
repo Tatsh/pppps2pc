@@ -3,7 +3,6 @@ from __future__ import annotations
 
 from pathlib import Path
 import logging
-import logging.config
 
 import hid  # type: ignore[import-not-found]
 
