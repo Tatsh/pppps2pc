@@ -17,6 +17,7 @@
 /mypy-report*/
 __pycache__/
 cobertura.xml
+coverage.xml
 htmlcov/
 kernel/*.cmd
 kernel/*.ko

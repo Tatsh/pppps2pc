@@ -21,6 +21,7 @@ commitizen
 conftest
 contig
 coveragerc
+coverallsapp
 cpufreq
 crtc
 dapm
@@ -93,6 +94,7 @@ launchable
 lextudio
 lhash
 libbpf
+libera
 libjsonnet
 libudev
 libusb
@@ -121,6 +123,7 @@ numpy
 numpydoc
 oldnew
 onefile
+pavelzw
 pgdat
 pgid
 phandle
@@ -139,6 +142,7 @@ pydantic
 pydocstyle
 pyinstaller
 pylint
+pypa
 pypi
 pyproject
 pytest
