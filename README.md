@@ -4,7 +4,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/pppps2pc)](https://pypi.org/project/pppps2pc/)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/Tatsh/pppps2pc)](https://github.com/Tatsh/pppps2pc/tags)
 [![License](https://img.shields.io/github/license/Tatsh/pppps2pc)](https://github.com/Tatsh/pppps2pc/blob/master/LICENSE.txt)
-[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.1.1/master)](https://github.com/Tatsh/pppps2pc/compare/v0.1.1...master)
+[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.1.2/master)](https://github.com/Tatsh/pppps2pc/compare/v0.1.2...master)
 [![CodeQL](https://github.com/Tatsh/pppps2pc/actions/workflows/codeql.yml/badge.svg)](https://github.com/Tatsh/pppps2pc/actions/workflows/codeql.yml)
 [![QA](https://github.com/Tatsh/pppps2pc/actions/workflows/qa.yml/badge.svg)](https://github.com/Tatsh/pppps2pc/actions/workflows/qa.yml)
 [![Tests](https://github.com/Tatsh/pppps2pc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/pppps2pc/actions/workflows/tests.yml)
