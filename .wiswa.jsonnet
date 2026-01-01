@@ -3,6 +3,7 @@ local utils = import 'utils.libjsonnet';
 {
   description: 'Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.',
   keywords: ['controller', 'para para paradise', 'peripherals', 'ps2', 'udev', 'usb', 'utilities'],
+  security_policy_supported_versions: { '0.1.x': ':white_check_mark:' },
   project_name: 'pppps2pc',
   version: '0.1.2',
   want_main: true,
