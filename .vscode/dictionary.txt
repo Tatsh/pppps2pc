@@ -15,7 +15,6 @@ bvec
 cand
 cdev
 cmsghdr
-codeowners
 colorlog
 commitizen
 conftest
@@ -53,10 +52,10 @@ extid
 filevers
 fontawesome
 foxundermoon
-ftrace
 fwnode
 genindex
 genradix
+getline
 globaltoc
 gmock
 hctx
@@ -165,6 +164,8 @@ shdma
 shellformat
 shost
 sifrpc
+snapcore
+snapcraft
 softprops
 sphinxcontrib
 srcu

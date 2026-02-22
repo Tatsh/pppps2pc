@@ -1,0 +1,24 @@
+apps:
+  pppps2pc:
+    command: 'bin/ps2para'
+    plugs:
+      - 'home'
+      - 'network'
+      - 'network-bind'
+base: 'core24'
+confinement: 'strict'
+description: 'Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.'
+grade: 'stable'
+name: 'pppps2pc'
+parts:
+  pppps2pc:
+    plugin: 'poetry'
+    source: '.'
+    stage-packages: []
+platforms:
+  amd64:
+    build-on: 'amd64'
+  arm64:
+    build-on: 'arm64'
+summary: 'Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.'
+version: '0.1.2'
