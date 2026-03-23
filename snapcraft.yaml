@@ -1,6 +1,6 @@
 apps:
   pppps2pc:
-    command: 'bin/pppps2pc'
+    command: 'bin/ps2para'
     plugs:
       - 'home'
       - 'network'
