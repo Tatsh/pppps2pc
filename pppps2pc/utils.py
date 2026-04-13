@@ -4,7 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 import logging
 
-import hid  # type: ignore[import-not-found]
+import hid  # type: ignore[import-not-found] # ty: ignore[unresolved-import]
 
 from .constants import ENABLE_MAGIC_BYTES, UDEV_RULES_FILENAME, UDEV_RULE_LINE
 

@@ -28,7 +28,7 @@ platforms:
   arm64:
     build-on: 'arm64'
 source-code: 'https://github.com/Tatsh/pppps2pc'
-summary: 'Enable the ParaParaParadise PS2 controller on a PC.'
+summary: 'Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC.'
 title: 'pppps2pc'
 version: '0.1.2'
 website: 'https://tatsh.github.io/pppps2pc/'
