@@ -49,6 +49,7 @@ dsos
 dunder
 eeyore
 elif
+esac
 esbenp
 esbonio
 estatus
@@ -167,12 +168,14 @@ pypa
 pypi
 pyproject
 pytest
+pythonhosted
 rbtree
 rdma
 reflow
 regen
 rela
 resv
+ripgreprc
 rsrc
 rstcheck
 rtds
@@ -209,6 +212,7 @@ tomlkit
 tomllib
 tomlq
 tonumber
+tostring
 tryfirst
 uapi
 ubyte
