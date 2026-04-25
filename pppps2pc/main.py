@@ -28,12 +28,12 @@ def enable(*, debug: bool = False) -> None:
                   loggers={
                       'hidapi': {
                           'handlers': ('console',),
-                          'propagate': False,
+                          'propagate': False
                       },
                       'pppps2pc': {
                           'handlers': ('console',),
-                          'propagate': False,
-                      },
+                          'propagate': False
+                      }
                   })
     try:
         enable_ppp_controller()
@@ -55,13 +55,7 @@ def install_udev_rules_main(rules_dir: Path,
                             *,
                             debug: bool = False) -> None:
     """Install udev rules for the device."""  # noqa: DOC501
-    setup_logging(debug=debug,
-                  loggers={
-                      'pppps2pc': {
-                          'handlers': ('console',),
-                          'propagate': False,
-                      },
-                  })
+    setup_logging(debug=debug, loggers={'pppps2pc': {'handlers': ('console',), 'propagate': False}})
     try:
         install_udev_rules(path or sys.argv[0], rules_dir)
     except PermissionError as e:
