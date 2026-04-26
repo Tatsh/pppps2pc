@@ -138,7 +138,6 @@ notarytool
 notrace
 npmjs
 numpy
-numpydoc
 oldnew
 onefile
 oneline
