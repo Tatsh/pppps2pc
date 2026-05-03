@@ -6,9 +6,9 @@ requires = ["hatchling"]
 dev = [
   "commitizen>=4.13.10",
   "cz-path>=0.0.6",
-  "mypy>=1.20.1",
+  "mypy>=1.20.2",
   "ruff==0.15.12",
-  "ty>=0.0.31",
+  "ty>=0.0.32",
   "yapf>=0.43.0",
 ]
 docs = [
@@ -43,7 +43,7 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Typing :: Typed",
 ]
-dependencies = ["bascom>=0.1.2", "click>=8.3.2", "hidapi>=0.15.0", "typing-extensions>=4.15.0"]
+dependencies = ["bascom>=0.1.2", "click>=8.3.3", "hidapi>=0.15.0", "typing-extensions>=4.15.0"]
 description = "Extremely simple tool to enable the ParaParaParadise PS2 controller on a PC."
 keywords = ["controller", "para para paradise", "peripherals", "ps2", "udev", "usb", "utilities"]
 license = "MIT"
