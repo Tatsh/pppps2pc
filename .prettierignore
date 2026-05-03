@@ -31,6 +31,7 @@
 /.yarn/install-state.gz
 /.zprofile
 /.zshrc
+/70-ppp.rules
 /build/
 /dist/
 /docs/_build/

@@ -9,6 +9,17 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [unreleased]
 
+## [0.1.3] - 2026-05-02
+
+### Changed
+
+- Updated runtime dependency `click` to 8.3.3.
+
+### Fixed
+
+- Snapcraft packaging: corrected the command path to match the entry point and shortened the
+  summary to fit the 78-character limit.
+
 ## [0.1.2]
 
 ### Added
@@ -33,7 +44,8 @@ Very minor changes.
 
 First version.
 
-[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.1.2...HEAD
+[unreleased]: https://github.com/Tatsh/pppps2pc/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/Tatsh/pppps2pc/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/Tatsh/pppps2pc/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/Tatsh/pppps2pc/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Tatsh/pppps2pc/compare/v0.0.1...v0.1.0

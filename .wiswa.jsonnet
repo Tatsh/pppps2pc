@@ -6,7 +6,7 @@ local utils = import 'utils.libjsonnet';
   keywords: ['controller', 'para para paradise', 'peripherals', 'ps2', 'udev', 'usb', 'utilities'],
   security_policy_supported_versions: { '0.1.x': ':white_check_mark:' },
   project_name: 'pppps2pc',
-  version: '0.1.2',
+  version: '0.1.3',
   want_main: true,
   want_flatpak: true,
   publishing+: { flathub: 'sh.tat.pppps2pc' },

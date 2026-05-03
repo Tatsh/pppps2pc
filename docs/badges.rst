@@ -16,8 +16,8 @@
       :target: https://github.com/Tatsh/pppps2pc/blob/master/LICENSE.txt
       :alt: License
 
-   .. image:: https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.1.2/master
-      :target: https://github.com/Tatsh/pppps2pc/compare/v0.1.2...master
+   .. image:: https://img.shields.io/github/commits-since/Tatsh/pppps2pc/v0.1.3/master
+      :target: https://github.com/Tatsh/pppps2pc/compare/v0.1.3...master
       :alt: GitHub commits since latest release (by SemVer including pre-releases)
 
    .. image:: https://github.com/Tatsh/pppps2pc/actions/workflows/codeql.yml/badge.svg
