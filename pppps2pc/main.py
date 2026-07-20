@@ -23,7 +23,7 @@ def main() -> None:
 @click.command(context_settings={'help_option_names': ('-h', '--help')})
 @click.option('-d', '--debug', help='Enable debug level logging.', is_flag=True)
 def enable(*, debug: bool = False) -> None:
-    """Enable a PS2 ParaParaParadise controller."""  # noqa: DOC501
+    """Enable a PS2 ParaParaParadise controller."""  # ruff:ignore[docstring-missing-exception]
     setup_logging(debug=debug,
                   loggers={
                       'hidapi': {
@@ -54,7 +54,7 @@ def install_udev_rules_main(rules_dir: Path,
                             path: str | None = None,
                             *,
                             debug: bool = False) -> None:
-    """Install udev rules for the device."""  # noqa: DOC501
+    """Install udev rules for the device."""  # ruff:ignore[docstring-missing-exception]
     setup_logging(debug=debug, loggers={'pppps2pc': {'handlers': ('console',), 'propagate': False}})
     try:
         install_udev_rules(path or sys.argv[0], rules_dir)
