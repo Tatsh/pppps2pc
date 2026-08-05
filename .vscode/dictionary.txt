@@ -68,6 +68,7 @@ genindex
 genradix
 globaltoc
 gmock
+handoff
 hctx
 hdesc
 hdev
@@ -136,7 +137,6 @@ norecursedirs
 nostdinc
 notarytool
 notrace
-npmjs
 numpy
 oldnew
 onefile
@@ -153,6 +153,7 @@ plistlib
 portaddr
 postorder
 pppps
+preapproved
 prelinks
 privobj
 prodvers
@@ -193,10 +194,10 @@ sifrpc
 signtool
 snapcore
 snapcraft
-softprops
 soupsieve
 sphinxcontrib
 srcu
+statusline
 strlist
 subdev
 subelement
@@ -217,6 +218,8 @@ uapi
 ubyte
 udvare
 umem
+undraft
+undrafted
 usbd
 usbkb
 validaity
@@ -226,10 +229,13 @@ venv
 vers
 virtio
 virtualenv
+winget
 wiswa
 wiswa's
+worktree
 xcrun
 yapf
 yapfignore
 yarnrc
+zizmor
 zonelist
