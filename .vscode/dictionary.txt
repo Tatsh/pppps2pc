@@ -1,7 +1,6 @@
 aggr
 allnodes
 anchore
-Ångström
 apei
 appdir
 appimage
@@ -9,6 +8,7 @@ appinfo
 asyncio
 autodoc
 automodule
+autouse
 auxs
 bascom
 bitrange
@@ -23,7 +23,6 @@ colorlog
 commitizen
 conftest
 contig
-cooldown
 coveragerc
 coverallsapp
 cpufreq
@@ -49,6 +48,7 @@ dsos
 dunder
 eeyore
 elif
+endswith
 esac
 esbenp
 esbonio
@@ -82,7 +82,6 @@ hstate
 htmlcov
 icsk
 insn
-intersphinx
 intf
 intid
 intlist
@@ -133,11 +132,15 @@ netdev
 nlmsg
 nodemask
 nonreserved
+noone
+noqa
 norecursedirs
 nostdinc
 notarytool
 notrace
+nullglob
 numpy
+numpydoc
 oldnew
 onefile
 oneline
@@ -150,6 +153,7 @@ phdr
 physmem
 pipx
 plistlib
+popen
 portaddr
 postorder
 pppps
@@ -181,6 +185,7 @@ rstcheck
 rtds
 rtnl
 safel
+sbclaude
 schemafile
 sctp
 sdist
@@ -189,6 +194,7 @@ sgtable
 shdma
 shellcheck
 shellformat
+shopt
 shost
 sifrpc
 signtool
@@ -232,10 +238,10 @@ virtualenv
 winget
 wiswa
 wiswa's
-worktree
 xcrun
 yapf
 yapfignore
 yarnrc
 zizmor
 zonelist
+Ångström
