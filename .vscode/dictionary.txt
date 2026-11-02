@@ -107,6 +107,7 @@ lhash
 libbpf
 libera
 libjsonnet
+librsvg
 libsonnet
 libudev
 libusb
@@ -182,6 +183,7 @@ resv
 ripgreprc
 rsrc
 rstcheck
+rsvg
 rtds
 rtnl
 safel
