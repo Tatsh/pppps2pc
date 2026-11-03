@@ -14,11 +14,15 @@ jobs:
       - name: Prepare kernel source with Clang
         run: |
           sudo apt-get update
-          sudo apt-get install -y bc bison clang flex libelf-dev libssl-dev linux-source llvm lld
-          archive=$(find /usr/src -maxdepth 2 -name 'linux-source-*.tar.*' | sort -V | tail -1)
-          test -n "$archive"
-          kernel_source="$GITHUB_WORKSPACE/.wiswa-ci/scan-build/linux"
+          sudo apt-get install -y bc bison clang curl flex libelf-dev libssl-dev llvm lld xz-utils
+          kernel_source="$GITHUB_WORKSPACE/.wiswa-ci/scan-build/linux-6.12.115"
+          archive="$kernel_source.tar.xz"
           mkdir -p "$kernel_source"
+          curl --fail --location --retry 3 \
+            https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.115.tar.xz -o "$archive"
+          printf '%s  %s\n' \
+            0ec90fe4b20422b1b664b77e6d2dde22b40bd41e7eb2cad8ac8739a4749cb1bb "$archive" \
+            | sha256sum --check
           tar -xf "$archive" -C "$kernel_source" --strip-components=1
           make -C "$kernel_source" LLVM=1 defconfig
           make -C "$kernel_source" LLVM=1 --jobs=2 modules_prepare
