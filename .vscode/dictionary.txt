@@ -24,6 +24,7 @@ colorlog
 commitizen
 conftest
 contig
+copytree
 coveragerc
 coverallsapp
 cpufreq
@@ -93,7 +94,6 @@ iommu
 iopt
 isoc
 isort
-iterdir
 itertools
 iwyu
 jinja
@@ -189,6 +189,7 @@ regen
 rela
 resv
 ripgreprc
+rmtree
 rsrc
 rstcheck
 rsvg
@@ -206,6 +207,7 @@ shellcheck
 shellformat
 shopt
 shost
+shutil
 sifrpc
 signtool
 snapcore
