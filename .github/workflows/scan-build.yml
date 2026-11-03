@@ -11,30 +11,44 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - name: Install kernel headers
+      - name: Prepare kernel source with Clang
         run: |
           sudo apt-get update
-          sudo apt-get install -y linux-headers-generic
-          headers=$(find /usr/src -maxdepth 1 -type d -name 'linux-headers-*-generic' | sort -V | tail -1)
-          test -n "$headers"
-          echo "KERNEL_HEADERS=$headers" >> "$GITHUB_ENV"
+          sudo apt-get install -y bc bison clang flex libelf-dev libssl-dev linux-source llvm lld
+          archive=$(find /usr/src -maxdepth 2 -name 'linux-source-*.tar.*' | sort -V | tail -1)
+          test -n "$archive"
+          kernel_source="$GITHUB_WORKSPACE/.wiswa-ci/scan-build/linux"
+          mkdir -p "$kernel_source"
+          tar -xf "$archive" -C "$kernel_source" --strip-components=1
+          make -C "$kernel_source" LLVM=1 defconfig
+          make -C "$kernel_source" LLVM=1 --jobs=2 modules_prepare
+          echo "KERNEL_SOURCE=$kernel_source" >> "$GITHUB_ENV"
       - name: Install Clang analyzer
         run: |
           sudo apt-get update
           sudo apt-get install -y clang clang-tools
-      - name: Configure with compiler interception
+      - env:
+          SCAN_BUILD_CONFIGURE_COMMAND: 'true'
+        name: Configure with compiler interception
         run: |-
           mkdir -p scan-build-report
-          scan-build --use-cc=clang --use-c++=clang++ -o "$RUNNER_TEMP/scan-configure" true 2>&1 | tee scan-build-report/build.log
-      - id: analysis
+          scan-build --use-cc=clang --use-c++=clang++ -o "$RUNNER_TEMP/scan-configure" bash -eo pipefail -c "$SCAN_BUILD_CONFIGURE_COMMAND" 2>&1 | tee scan-build-report/build.log
+      - env:
+          SCAN_BUILD_BUILD_COMMAND: |-
+            make -C "$KERNEL_SOURCE" M="$GITHUB_WORKSPACE/kernel" \
+              LLVM=1 CC="$CC" HOSTCC="$CC" HOSTCXX="$CXX" konami_ppp.o
+        id: analysis
         name: Analyze a clean build
         run: |
           mkdir -p scan-build-report
           scan-build --use-cc=clang --use-c++=clang++ -plist-html --keep-empty -v \
-            -o scan-build-report/results make -C "$KERNEL_HEADERS" M="$GITHUB_WORKSPACE/kernel" modules 2>&1 | tee -a scan-build-report/build.log
+            -o scan-build-report/results bash -eo pipefail -c "$SCAN_BUILD_BUILD_COMMAND" \
+            2>&1 | tee -a scan-build-report/build.log
       - env:
           ANALYSIS_OUTCOME: ${{ steps.analysis.outcome }}
-          ANALYSIS_SCOPE: Linux HID driver under kernel/. The PS2 driver decompilation is not built.
+          ANALYSIS_SCOPE:
+            All Linux HID driver objects under kernel/, without module packaging. The PS2
+            driver decompilation is not built.
         if: ${{ !cancelled() }}
         name: Prepare report and verify analysis coverage
         run: |

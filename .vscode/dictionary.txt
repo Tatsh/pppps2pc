@@ -37,6 +37,7 @@ datatable
 datatables
 debugpy
 dedup
+defconfig
 devtype
 dimm
 displayid
@@ -78,6 +79,8 @@ hibyte
 hidinput
 hists
 hlist
+hostcc
+hostcxx
 hoverxref
 hstate
 htmlcov
@@ -107,6 +110,7 @@ launchable
 lextudio
 lhash
 libbpf
+libelf
 libera
 libjsonnet
 librsvg
@@ -155,6 +159,7 @@ pgid
 phandle
 phdr
 physmem
+pipefail
 pipx
 plistlib
 popen

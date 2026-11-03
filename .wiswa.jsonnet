@@ -67,8 +67,12 @@ local utils = import 'utils.libjsonnet';
   want_scan_build: true,
   github+: { workflows+: {
     scan_build+: {
-      scope: 'Linux HID driver under kernel/. The PS2 driver decompilation is not built.',
-      build_command: 'make -C "$KERNEL_HEADERS" M="$GITHUB_WORKSPACE/kernel" modules',
+      scope: 'All Linux HID driver objects under kernel/, without module packaging. '
+             + 'The PS2 driver decompilation is not built.',
+      build_command: |||-
+        make -C "$KERNEL_SOURCE" M="$GITHUB_WORKSPACE/kernel" \
+          LLVM=1 CC="$CC" HOSTCC="$CC" HOSTCXX="$CXX" konami_ppp.o
+      |||,
       configure_command: 'true',
       documentation_steps: [
         {
@@ -79,13 +83,18 @@ local utils = import 'utils.libjsonnet';
       ],
       setup_steps: [
         {
-          name: 'Install kernel headers',
+          name: 'Prepare kernel source with Clang',
           run: |||
             sudo apt-get update
-            sudo apt-get install -y linux-headers-generic
-            headers=$(find /usr/src -maxdepth 1 -type d -name 'linux-headers-*-generic' | sort -V | tail -1)
-            test -n "$headers"
-            echo "KERNEL_HEADERS=$headers" >> "$GITHUB_ENV"
+            sudo apt-get install -y bc bison clang flex libelf-dev libssl-dev linux-source llvm lld
+            archive=$(find /usr/src -maxdepth 2 -name 'linux-source-*.tar.*' | sort -V | tail -1)
+            test -n "$archive"
+            kernel_source="$GITHUB_WORKSPACE/.wiswa-ci/scan-build/linux"
+            mkdir -p "$kernel_source"
+            tar -xf "$archive" -C "$kernel_source" --strip-components=1
+            make -C "$kernel_source" LLVM=1 defconfig
+            make -C "$kernel_source" LLVM=1 --jobs=2 modules_prepare
+            echo "KERNEL_SOURCE=$kernel_source" >> "$GITHUB_ENV"
           |||,
         },
       ],
