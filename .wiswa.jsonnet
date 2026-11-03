@@ -63,3 +63,9 @@ local utils = import 'utils.libjsonnet';
   },
   flatpak+: { command: 'ps2para' },
 }
++ {
+  want_scan_build: true,
+  github+: { workflows+: {
+    scan_build+: import '.wiswa-scan-build.jsonnet',
+  } },
+}

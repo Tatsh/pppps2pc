@@ -1,5 +1,6 @@
 aggr
 allnodes
+analyzer
 anchore
 apei
 appdir
@@ -89,6 +90,7 @@ iommu
 iopt
 isoc
 isort
+iterdir
 itertools
 iwyu
 jinja
@@ -132,6 +134,7 @@ nanddev
 netdev
 nlmsg
 nodemask
+nojekyll
 nonreserved
 noone
 noqa
