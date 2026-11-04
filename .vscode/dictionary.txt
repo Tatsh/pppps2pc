@@ -184,6 +184,7 @@ pytest
 pythonhosted
 rbtree
 rdma
+rdparty
 reflow
 regen
 rela
@@ -196,6 +197,7 @@ rsvg
 rtds
 rtnl
 safel
+sarif
 sbclaude
 schemafile
 sctp

@@ -27,25 +27,39 @@ jobs:
           make -C "$kernel_source" LLVM=1 defconfig
           make -C "$kernel_source" LLVM=1 --jobs=2 modules_prepare
           echo "KERNEL_SOURCE=$kernel_source" >> "$GITHUB_ENV"
+      - name: Prepare scoped compiler wrappers
+        run: |
+          mkdir -p .wiswa-ci
+          install -m 755 .github/scripts/static-analysis.py .wiswa-ci/scan-build-cc
+          install -m 755 .github/scripts/static-analysis.py .wiswa-ci/scan-build-cxx
       - name: Install Clang analyzer
         run: |
           sudo apt-get update
           sudo apt-get install -y clang clang-tools
       - env:
-          SCAN_BUILD_CONFIGURE_COMMAND: 'true'
+          SCAN_BUILD_CONFIGURE_COMMAND: |
+            export STATIC_ANALYSIS_CC="$CC" STATIC_ANALYSIS_CXX="$CXX"
+            export STATIC_ANALYSIS_REAL_CC=clang STATIC_ANALYSIS_REAL_CXX=clang++
+            export CC="$GITHUB_WORKSPACE/.wiswa-ci/scan-build-cc"
+            export CXX="$GITHUB_WORKSPACE/.wiswa-ci/scan-build-cxx"
+            true
         name: Configure with compiler interception
         run: |-
           mkdir -p scan-build-report
-          scan-build --use-cc=clang --use-c++=clang++ -o "$RUNNER_TEMP/scan-configure" bash -eo pipefail -c "$SCAN_BUILD_CONFIGURE_COMMAND" 2>&1 | tee scan-build-report/build.log
+          scan-build --use-cc=clang --use-c++=clang++ --exclude "$(python3 .github/scripts/static-analysis.py --exclude)" -o "$RUNNER_TEMP/scan-configure" bash -eo pipefail -c "$SCAN_BUILD_CONFIGURE_COMMAND" 2>&1 | tee scan-build-report/build.log
       - env:
-          SCAN_BUILD_BUILD_COMMAND: |-
+          SCAN_BUILD_BUILD_COMMAND: |
+            export STATIC_ANALYSIS_CC="$CC" STATIC_ANALYSIS_CXX="$CXX"
+            export STATIC_ANALYSIS_REAL_CC=clang STATIC_ANALYSIS_REAL_CXX=clang++
+            export CC="$GITHUB_WORKSPACE/.wiswa-ci/scan-build-cc"
+            export CXX="$GITHUB_WORKSPACE/.wiswa-ci/scan-build-cxx"
             make -C "$KERNEL_SOURCE" M="$GITHUB_WORKSPACE/kernel" \
               LLVM=1 CC="$CC" HOSTCC="$CC" HOSTCXX="$CXX" konami_ppp.o
         id: analysis
         name: Analyze a clean build
         run: |
           mkdir -p scan-build-report
-          scan-build --use-cc=clang --use-c++=clang++ -plist-html --keep-empty -v \
+          scan-build --use-cc=clang --use-c++=clang++ --exclude "$(python3 .github/scripts/static-analysis.py --exclude)" -plist-html --keep-empty -v \
             -o scan-build-report/results bash -eo pipefail -c "$SCAN_BUILD_BUILD_COMMAND" \
             2>&1 | tee -a scan-build-report/build.log
       - env:
