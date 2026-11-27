@@ -63,46 +63,4 @@ local utils = import 'utils.libjsonnet';
   },
   flatpak+: { command: 'ps2para' },
 }
-+ {
-  want_scan_build: true,
-  github+: { workflows+: {
-    scan_build+: {
-      scope: 'All Linux HID driver objects under kernel/, without module packaging. '
-             + 'The PS2 driver decompilation is not built.',
-      build_command: |||-
-        make -C "$KERNEL_SOURCE" M="$GITHUB_WORKSPACE/kernel" \
-          LLVM=1 CC="$CC" HOSTCC="$CC" HOSTCXX="$CXX" konami_ppp.o
-      |||,
-      configure_command: 'true',
-      documentation_steps: [
-        {
-          name: 'Build project homepage',
-          uses: 'actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697',
-          with: { destination: 'build/html' },
-        },
-      ],
-      setup_steps: [
-        {
-          name: 'Prepare kernel source with Clang',
-          run: |||
-            sudo apt-get update
-            sudo apt-get install -y bc bison clang curl flex libelf-dev libssl-dev llvm lld xz-utils
-            kernel_source="$GITHUB_WORKSPACE/.wiswa-ci/scan-build/linux-6.12.115"
-            archive="$kernel_source.tar.xz"
-            mkdir -p "$kernel_source"
-            curl --fail --location --retry 3 \
-              https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.12.115.tar.xz -o "$archive"
-            printf '%s  %s\n' \
-              0ec90fe4b20422b1b664b77e6d2dde22b40bd41e7eb2cad8ac8739a4749cb1bb "$archive" \
-              | sha256sum --check
-            tar -xf "$archive" -C "$kernel_source" --strip-components=1
-            make -C "$kernel_source" LLVM=1 defconfig
-            make -C "$kernel_source" LLVM=1 --jobs=2 modules_prepare
-            echo "KERNEL_SOURCE=$kernel_source" >> "$GITHUB_ENV"
-          |||,
-        },
-      ],
-    },
-  } },
-}
 + { static_analysis_paths: ['kernel'] }
