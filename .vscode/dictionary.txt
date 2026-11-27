@@ -1,6 +1,5 @@
 aggr
 allnodes
-analyzer
 anchore
 apei
 appdir
@@ -24,7 +23,6 @@ colorlog
 commitizen
 conftest
 contig
-copytree
 coveragerc
 coverallsapp
 cpufreq
@@ -38,7 +36,6 @@ datatable
 datatables
 debugpy
 dedup
-defconfig
 devtype
 dimm
 displayid
@@ -80,8 +77,6 @@ hibyte
 hidinput
 hists
 hlist
-hostcc
-hostcxx
 hoverxref
 hstate
 htmlcov
@@ -110,7 +105,6 @@ launchable
 lextudio
 lhash
 libbpf
-libelf
 libera
 libjsonnet
 librsvg
@@ -159,7 +153,6 @@ pgid
 phandle
 phdr
 physmem
-pipefail
 pipx
 plistlib
 popen
@@ -184,20 +177,17 @@ pytest
 pythonhosted
 rbtree
 rdma
-rdparty
 reflow
 regen
 rela
 resv
 ripgreprc
-rmtree
 rsrc
 rstcheck
 rsvg
 rtds
 rtnl
 safel
-sarif
 sbclaude
 schemafile
 sctp
@@ -209,7 +199,6 @@ shellcheck
 shellformat
 shopt
 shost
-shutil
 sifrpc
 signtool
 snapcore
